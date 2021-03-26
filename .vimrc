@@ -13,6 +13,8 @@ Plugin 'VundleVim/Vundle.vim'
 Plugin 'tpope/vim-fugitive'
 Plugin 'tpope/vim-commentary'
 Plugin 'scrooloose/nerdtree'
+Plugin 'junegunn/fzf' " fuzzy match
+Plugin 'junegunn/fzf.vim' " buffer search
 Plugin 'ctrlpvim/ctrlp.vim'
 Plugin 'vim-airline/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
@@ -28,6 +30,8 @@ Plugin 'tpope/vim-rails'
 Plugin 'thoughtbot/vim-rspec'
 Plugin 'skalnik/vim-vroom'
 Plugin 'osyo-manga/vim-monster'
+" Elm specific plugins
+Plugin 'elmcast/elm-vim'
 call vundle#end()            " required
 
 let mapleader= ","

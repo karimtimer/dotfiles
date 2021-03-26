@@ -99,9 +99,10 @@ source $ZSH/oh-my-zsh.sh
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
-export GITHUB_PACKAGES_TOKEN=cd7ae15cd4dee3e9256b31b6d62554b1e3c6e5ec
+export GITHUB_PACKAGES_TOKEN=4b949f674794e0f7a69f8ad2875ed5d42f6c6e3d
 
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 alias config='/usr/bin/git --git-dir=/Users/ktimer/.cfg/ --work-tree=/Users/ktimer'
+export PATH="/usr/local/opt/elasticsearch@6/bin:$PATH"
