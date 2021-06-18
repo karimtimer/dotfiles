@@ -7,7 +7,6 @@ call vundle#begin()
 " alternatively, pass a path where Vundle should install plugins
 "call vundle#begin('~/some/path/here')
 
-" let Vundle manage Vundle, required
 Plugin 'mileszs/ack.vim' " Run your favorite search tool from Vim, with an enhanced results list.
 Plugin 'VundleVim/Vundle.vim'
 Plugin 'tpope/vim-fugitive'
@@ -32,6 +31,10 @@ Plugin 'skalnik/vim-vroom'
 Plugin 'osyo-manga/vim-monster'
 " Elm specific plugins
 Plugin 'elmcast/elm-vim'
+Plugin 'dense-analysis/ale' " install ale
+Plugin 'alvan/vim-closetag' " Automatically closes HTML tags once you finish typing them.
+Plugin 'andrewradev/tagalong.vim' " Change an HTML(ish) opening tag and take the closing one along as well
+Plugin 'prettier/vim-prettier' " vim plugin wrapper for prettier, pre-configured with custom default prettier settings
 call vundle#end()            " required
 
 let mapleader= ","
@@ -41,6 +44,8 @@ set number
 autocmd FileType ruby setlocal expandtab shiftwidth=2 tabstop=2
 autocmd FileType eruby setlocal expandtab shiftwidth=2 tabstop=2
 
+set autochdir
+let NERDTreeChDirMode=2
 nnoremap <C-n> :NERDTree<CR>
 nnoremap <leader>a :NERDTreeFocus<CR>
 nnoremap <leader>m :NERDTreeToggle<CR>
@@ -66,3 +71,6 @@ syntax on             " Enable syntax highlighting
 filetype on           " Enable filetype detection
 filetype indent on    " Enable filetype-specific indenting
 filetype plugin on    " Enable filetype-specific plugins
+
+" indenting
+autocmd Filetype css setlocal tabstop=4

@@ -106,3 +106,11 @@ export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 alias config='/usr/bin/git --git-dir=/Users/ktimer/.cfg/ --work-tree=/Users/ktimer'
 export PATH="/usr/local/opt/elasticsearch@6/bin:$PATH"
+
+
+# for python
+alias python='python3'
+export PATH="/Users/ktimer/.pyenv/bin:$PATH"
+eval "$(pyenv init -)"
+eval "$(pyenv virtualenv-init -)"
+
