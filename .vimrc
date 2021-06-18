@@ -44,8 +44,7 @@ set number
 autocmd FileType ruby setlocal expandtab shiftwidth=2 tabstop=2
 autocmd FileType eruby setlocal expandtab shiftwidth=2 tabstop=2
 
-set autochdir
-let NERDTreeChDirMode=2
+let  g:NERDTreeChDirMode = 2
 nnoremap <C-n> :NERDTree<CR>
 nnoremap <leader>a :NERDTreeFocus<CR>
 nnoremap <leader>m :NERDTreeToggle<CR>
@@ -57,7 +56,7 @@ let g:ackprg = 'ag --vimgrep'
 nnoremap <Leader>b :b <C-d>
 nnoremap <leader><leader> :b#<cr>
 
-" RSpec.vim mappings
+"" RSpec.vim mappings
 let &path = getcwd() . '/**'
 let g:rspec_runner = "os_x_iterm2"
 map <Leader>t :call RunCurrentSpecFile()<CR>
@@ -65,12 +64,18 @@ map <Leader>s :call RunNearestSpec()<CR>
 map <Leader>l :call RunLastSpec()<CR>
 map <Leader>a :call RunAllSpecs()<CR>
 
-" Ruby
+"" Ruby
 set nocompatible      " We're running Vim, not Vi!
 syntax on             " Enable syntax highlighting
 filetype on           " Enable filetype detection
 filetype indent on    " Enable filetype-specific indenting
 filetype plugin on    " Enable filetype-specific plugins
 
-" indenting
-autocmd Filetype css setlocal tabstop=4
+"" vim styling
+autocmd Filetype css setlocal tabstop=4 " indenting
+set hlsearch " set search highlighting
+
+" Exit Vim if NERDTree is the only window left.
+autocmd BufEnter * if tabpagenr('$') == 1 && winnr('$') == 1 && exists('b:NERDTree') && b:NERDTree.isTabTree() |
+    \ quit | endif
+
