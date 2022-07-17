@@ -14,9 +14,6 @@ Plugin 'tpope/vim-fugitive'
 Plugin 'tpope/vim-commentary'
 Plugin 'scrooloose/nerdtree'
 Plugin 'neoclide/coc.nvim'
-" Plugin 'autozimu/LanguageClient-neovim'
-" Plugin 'Shougo/ddc.vim'
-" Plugin 'vim-denops/denops.vim'
 Plugin 'junegunn/fzf' " fuzzy match
 Plugin 'junegunn/fzf.vim' " buffer search
 Plugin 'mildred/vim-bufmru' " Switch buffers in most recently used order
@@ -24,17 +21,11 @@ Plugin 'vim-airline/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
 Plugin 'mhinz/vim-startify'
 Plugin 'yegappan/grep'
-" Plugin 'airblade/vim-gitgutter'
-" Plugin 'godlygeek/tabular'
 Plugin 'plasticboy/vim-markdown'
-" RoR specific plugins
 Plugin 'tpope/vim-endwise'
 Plugin 'vim-ruby/vim-ruby'
 Plugin 'tpope/vim-rails'
 Plugin 'thoughtbot/vim-rspec'
-" Plugin 'skalnik/vim-vroom'
-" Plugin 'osyo-manga/vim-monster'
-" Elm specific plugins
 Plugin 'elmcast/elm-vim'
 Plugin 'dense-analysis/ale' " install ale
 Plugin 'alvan/vim-closetag' " Automatically closes HTML tags once you finish typing them.
@@ -51,6 +42,37 @@ let g:material_theme_style = 'darker'
 set termguicolors
 set number
 
+autocmd FileType ruby setlocal expandtab shiftwidth=2 tabstop=2
+autocmd FileType eruby setlocal expandtab shiftwidth=2 tabstop=2
+
+" Silver searcher
+nnoremap <leader>s :Ag<CR>
+
+"fugitive
+nnoremap <silent>blame :Git blame<CR>
+
+
+let  g:NERDTreeChDirMode = 2
+nnoremap <C-n> :NERDTree<CR>
+" nnoremap <leader>a :NERDTreeFocus<CR>
+nnoremap <leader>m :NERDTreeToggle<CR>
+" nnoremap <C-f> :NERDTreeFind<CR>
+nnoremap <silent> <Leader>v :NERDTreeFind<CR>
+let NERDTreeQuitOnOpen = 1
+let NERDTreeMinimalUI = 1
+let NERDTreeDirArrows = 1
+
+" let g:airline_theme='deus'
+let g:airline_theme = 'material'
+
+nnoremap <Leader>b :b <C-d>
+nnoremap <leader><leader> :b#<cr>
+
+let g:ale_set_highlights = 0
+let g:ale_sign_error = '❌'
+let g:ale_sign_warning = '⚠️'
+
+"" Coc
 " Set internal encoding of vim, not needed on neovim, since coc.nvim using some
 " unicode characters in the file autoload/float.vim
 set encoding=utf-8
@@ -85,47 +107,6 @@ endif
 inoremap <silent><expr> <cr> pumvisible() ? coc#_select_confirm()
                               \: "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
 
-
-
-
-autocmd FileType ruby setlocal expandtab shiftwidth=2 tabstop=2
-autocmd FileType eruby setlocal expandtab shiftwidth=2 tabstop=2
-
-" Silver searcher
-nnoremap <leader>s :Ag<CR>
-
-"fugitive
-nnoremap <silent>blame :Git blame<CR>
-
-
-let  g:NERDTreeChDirMode = 2
-nnoremap <C-n> :NERDTree<CR>
-" nnoremap <leader>a :NERDTreeFocus<CR>
-nnoremap <leader>m :NERDTreeToggle<CR>
-" nnoremap <C-f> :NERDTreeFind<CR>
-nnoremap <silent> <Leader>v :NERDTreeFind<CR>
-let NERDTreeQuitOnOpen = 1
-let NERDTreeMinimalUI = 1
-let NERDTreeDirArrows = 1
-
-" let g:airline_theme='deus'
-let g:airline_theme = 'material'
-
-nnoremap <Leader>b :b <C-d>
-nnoremap <leader><leader> :b#<cr>
-
-"" RSpec.vim mappings
-" let &path = getcwd() . '/**'
-" let g:rspec_runner = "os_x_iterm2"
-" map <Leader>t :call RunCurrentSpecFile()<CR>
-" map <Leader>s :call RunNearestSpec()<CR>
-" map <Leader>l :call RunLastSpec()<CR>
-" map <Leader>a :call RunAllSpecs()<CR>
-
-let g:ale_set_highlights = 0
-let g:ale_sign_error = '❌'
-let g:ale_sign_warning = '⚠️'
-
 "" Ruby
 set nocompatible      " We're running Vim, not Vi!
 syntax on             " Enable syntax highlighting
@@ -140,5 +121,3 @@ set hlsearch " set search highlighting
 " Exit Vim if NERDTree is the only window left.
 autocmd BufEnter * if tabpagenr('$') == 1 && winnr('$') == 1 && exists('b:NERDTree') && b:NERDTree.isTabTree() |
     \ quit | endif
-
-
