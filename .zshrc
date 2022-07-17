@@ -16,6 +16,7 @@ export ZSH="$HOME/.oh-my-zsh"
 # to know which specific one was loaded, run: echo $RANDOM_THEME
 # See https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
 ZSH_THEME="powerlevel10k/powerlevel10k"
+
 # Set list of themes to pick from when loading at random
 # Setting this variable when ZSH_THEME=random will cause zsh to load
 # a theme from this variable instead of looking in $ZSH/themes/
@@ -76,21 +77,11 @@ ZSH_THEME="powerlevel10k/powerlevel10k"
 # Custom plugins may be added to $ZSH_CUSTOM/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git)
+plugins=(git dotenv)
 
 source $ZSH/oh-my-zsh.sh
-cd /projects/carwow
 
-
-#### ALIAS #####
-alias cr='carwow run'
-alias rake='carwow run bundle exec rake'
-alias rspec='carwow run rspec'
-alias brspec='carwow run bundle exec rspec'
-
-
-# 4b949f674794e0f7a69f8ad2875ed5d42f6c6e3d
-
+cd ~/carwow
 # User configuration
 
 # export MANPATH="/usr/local/man:$MANPATH"
@@ -119,5 +110,3 @@ alias brspec='carwow run bundle exec rspec'
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
-
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
