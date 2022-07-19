@@ -32,7 +32,10 @@ Plugin 'alvan/vim-closetag' " Automatically closes HTML tags once you finish typ
 Plugin 'andrewradev/tagalong.vim' " Change an HTML(ish) opening tag and take the closing one along as well
 Plugin 'prettier/vim-prettier' " vim plugin wrapper for prettier, pre-configured with custom default prettier settings
 Plugin 'kaicataldo/material.vim'
-call vundle#end()            " required
+Plugin 'rhysd/committia.vim' " More Pleasant Editing on Commit Message
+Plugin 'airblade/vim-gitgutter'
+Plugin 'ctrlpvim/ctrlp.vim' " Full path fuzzy file, buffer, mru, tag, ... finder for Vim.
+call vundle#end()
 
 let mapleader= ","
 
@@ -45,15 +48,20 @@ set number
 autocmd FileType ruby setlocal expandtab shiftwidth=2 tabstop=2
 autocmd FileType eruby setlocal expandtab shiftwidth=2 tabstop=2
 
+" gitgutter
+let g:gitgutter_highlight_lines = 0
+
 " Silver searcher
 nnoremap <leader>s :Ag<CR>
 
 "fugitive
 nnoremap <silent>blame :Git blame<CR>
 
+"CtrlP
+nnoremap <leader>f :CtrlP<CR>
 
 let  g:NERDTreeChDirMode = 2
-nnoremap <C-n> :NERDTree<CR>
+" nnoremap <C-n> :NERDTree<CR>
 " nnoremap <leader>a :NERDTreeFocus<CR>
 nnoremap <leader>m :NERDTreeToggle<CR>
 " nnoremap <C-f> :NERDTreeFind<CR>
@@ -80,7 +88,7 @@ set encoding=utf-8
 " Having longer updatetime (default is 4000 ms = 4 s) leads to noticeable
 " delays and poor user experience.
 set updatetime=300
-set signcolumn=yes
+" set signcolumn=yes
 " Use tab for trigger completion with characters ahead and navigate.
 " NOTE: Use command ':verbose imap <tab>' to make sure tab is not mapped by
 " other plugin before putting this into your config.
@@ -117,6 +125,25 @@ filetype plugin on    " Enable filetype-specific plugins
 "" vim styling
 autocmd Filetype css setlocal tabstop=4 " indenting
 set hlsearch " set search highlighting
+
+"" Committia
+let g:committia_hooks = {}
+function! g:committia_hooks.edit_open(info)
+    " Additional settings
+    setlocal spell
+
+    " If no commit message, start with insert mode
+    if a:info.vcs ==# 'git' && getline(1) ==# ''
+        startinsert
+    endif
+
+    " Scroll the diff window from insert mode
+    " Map <C-n> and <C-p>
+    imap <buffer><C-n> <Plug>(committia-scroll-diff-down-half)
+    imap <buffer><C-p> <Plug>(committia-scroll-diff-up-half)
+endfunction
+
+
 
 " Exit Vim if NERDTree is the only window left.
 autocmd BufEnter * if tabpagenr('$') == 1 && winnr('$') == 1 && exists('b:NERDTree') && b:NERDTree.isTabTree() |
